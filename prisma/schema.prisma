@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  engineType = "binary"
 }
 
 datasource db {
@@ -23,11 +24,32 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  purchases     Purchase[]
   // Optional for WebAuthn support
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Stock {
+  id        Int      @id @default(autoincrement())
+  name      String
+  price     Float
+  purchases Purchase[]
+}
+
+model Purchase {
+  id          Int     @id @default(autoincrement())
+  stockId     Int
+  userId      String
+  shares      Int
+  totalPrice  Float
+  createdAt   DateTime @default(now())
+  
+  stock       Stock   @relation(fields: [stockId], references: [id])
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
  
 model Account {
   userId            String
