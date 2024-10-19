@@ -92,9 +92,9 @@ const FormsPage: React.FC = () => {
       }),
     });
 
-    const data = await response.text(); // found this on stack overflow 
+    const data = await response.json(); // found this on stack overflow 
 
-    if (data.includes('success') || data.includes('Shares purchased')) {
+    if (data.message.includes('success') || data.message.includes('Shares purchased')) {
       alert('Shares purchased successfully!');
     } else {
       alert('Error purchasing shares. Please try again.');
