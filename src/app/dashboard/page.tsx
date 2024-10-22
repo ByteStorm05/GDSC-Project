@@ -3,7 +3,7 @@ import LineChart from "../components/Graph-1";
 import PolarAreaChart from "../components/Graph-2";
 import CardsDisplay from "../components/Cards";
 import DynamicTable from "../components/DynamicTable";
-import GetPurchasedStocks from "../components/GetPurchasedStocks";
+
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 

@@ -1,5 +1,4 @@
-import Image from "next/image";
-import prisma from "@/prisma";
+
 import { auth } from "@/auth";
 
 export default async function Home() {
