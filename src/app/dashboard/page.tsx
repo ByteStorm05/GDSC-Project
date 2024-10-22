@@ -44,7 +44,6 @@ const Page = async () => {
           {" "}
           {/* Adjusted to 90% width and centered */}
           <DynamicTable />
-          <GetPurchasedStocks />
         </div>
       </div>
     </div>

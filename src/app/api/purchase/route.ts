@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/prisma";
 import { auth } from "@/auth";
-import { getSession } from "next-auth/react";
+
 
 export async function POST(request: Request) {
   const { stock, shares, totalPrice } = await request.json();
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET(request: Request) {
+export async function GET() {
   const session = await auth();
   console.log("hah", session);
   const id = session?.user?.id;

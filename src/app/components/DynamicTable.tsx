@@ -23,7 +23,7 @@ const DynamicTable: React.FC = () => {
       const randomNum = data.number; // Assuming the socket emits a number
 
       // Updating the stock prices dynamically
-      const newPriceA = randomNum; // Use the number as stock price for Sales Growth
+      const newPriceA = randomNum*10; // Use the number as stock price for Sales Growth
       const newPriceB = (30 * randomNum - 6).toFixed(2); // Derived calculation for Customer Churn
       const newPriceC = (10 * randomNum).toFixed(2); // Derived calculation for Market Share
 

@@ -1,10 +1,14 @@
 'use client'; // Ensures this component runs on the client side
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { signOut, useSession } from 'next-auth/react';
 
 const Header: React.FC = () => {
   // State to track if the menu is open
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  
+  // Get the session data from next-auth
+  const { data: session } = useSession();
 
   // Function to toggle the menu
   const toggleMenu = () => {
@@ -23,13 +27,21 @@ const Header: React.FC = () => {
           <span className="self-center text-2xl font-semibold whitespace-nowrap">GDSC Project</span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2">
-          <button
-            type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
-          >
-            <Link href='api/auth/signin'>Login</Link>
-            
-          </button>
+          {session ? (
+            <button
+              onClick={() => signOut()}
+              className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+            >
+              <Link href='api/auth/signin'>Login</Link>
+            </button>
+          )}
           <button
             onClick={toggleMenu}
             type="button"
@@ -52,10 +64,13 @@ const Header: React.FC = () => {
               <a href="/dashboard" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Dashboard</a>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Profile</a>
+              <a href="/buystocks" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">BuyStocks</a>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About Me!</a>
+              <a href="/profile" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Profile</a>
+            </li>
+            <li>
+              <a href="/about-me" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About Me!</a>
             </li>
           </ul>
         </div>
