@@ -11,7 +11,7 @@ const About = () => {
 
       <h2 className="text-2xl font-semibold mb-2">Background</h2>
       <p className="mb-4">
-        I have completed courses in RPA Development and Web Development. I am proficient in React, JavaScript, HTML, and CSS, and I'm currently exploring technologies like Tailwind CSS and Firebase. I enjoy tackling complex challenges and constantly learning new technologies to enhance my development skills.
+        I have completed courses in RPA Development and Web Development. I am proficient in React, JavaScript, HTML, and CSS, and I am currently exploring technologies like Tailwind CSS and Firebase. I enjoy tackling complex challenges and constantly learning new technologies to enhance my development skills.
       </p>
 
       <h2 className="text-2xl font-semibold mb-2">Skills</h2>

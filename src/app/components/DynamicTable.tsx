@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FaArrowUp, FaArrowDown, FaRegChartBar } from 'react-icons/fa'; // Importing icons
 import io from 'socket.io-client';
 
 interface StockData {
@@ -12,9 +11,7 @@ interface StockData {
 
 const DynamicTable: React.FC = () => {
   const [stockData, setStockData] = useState<StockData[]>([]); // State to hold stock data rows
-  const [stockPriceA, setStockPriceA] = useState<number>(0); // For Sales Growth
-  const [stockPriceB, setStockPriceB] = useState<string>('0.00'); // For Customer Churn
-  const [stockPriceC, setStockPriceC] = useState<string>('0.00'); // For Market Share
+ 
 
   useEffect(() => {
     const socket = io('https://data.gdscnsut.com');
@@ -27,9 +24,7 @@ const DynamicTable: React.FC = () => {
       const newPriceB = (30 * randomNum - 6).toFixed(2); // Derived calculation for Customer Churn
       const newPriceC = (10 * randomNum).toFixed(2); // Derived calculation for Market Share
 
-      setStockPriceA(newPriceA);
-      setStockPriceB(newPriceB);
-      setStockPriceC(newPriceC);
+      
 
       // Create a new entry for the table
       const newEntry: StockData = {

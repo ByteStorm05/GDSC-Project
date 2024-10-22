@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface StockPrices {
   [key: string]: number;
@@ -44,7 +44,7 @@ const FormsPage: React.FC = () => {
     setPriceHistory([]);
     setProgress(0);
 
-    let priceUpdates: number[] = [];
+    const priceUpdates: number[] = [];
     let counter = 0;
 
     const intervalId = setInterval(() => {

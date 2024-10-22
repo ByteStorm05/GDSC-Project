@@ -80,7 +80,7 @@ const PolarAreaChart: React.FC = () => {
   return (
     <div>
       <h1>Dynamic Market Sector Distribution</h1>
-      <PolarArea data={data} options={config} />
+      <PolarArea data={data} options={config} /> {/* Ensure 'data' is being passed here */}
     </div>
   );
 };
