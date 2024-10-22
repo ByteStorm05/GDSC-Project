@@ -3,6 +3,13 @@
 import React from 'react';
 import { getPurchasedStocks } from '@/actions/purchases';
 
+interface Purchase {
+  id: number; // Change id type to number
+  stockName: string;
+  shares: number;
+  totalPrice: number;
+}
+
 const ProfilePage = async () => {
   try {
     // Fetch user purchases using getPurchasedStocks function
@@ -52,10 +59,10 @@ const ProfilePage = async () => {
             </tr>
           </thead>
           <tbody>
-            {purchases.map((purchase: any) => (
+            {purchases.map((purchase) => (
               <tr key={purchase.id} className="border-b border-gray-200 hover:bg-gray-100">
                 <td className="py-3 px-6 text-left">{purchase.stockName || 'Unknown Stock'}</td>
-                <td className="py-3 px-6 text-center">{purchase.shares} </td>
+                <td className="py-3 px-6 text-center">{purchase.shares}</td>
                 <td className="py-3 px-6 text-center">${purchase.totalPrice}</td>
                 <td className="py-3 px-6 text-right">
                   <button className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Sell</button>
