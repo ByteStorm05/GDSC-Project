@@ -1,14 +1,19 @@
 export default async function Signup() {
   async function submitdata(formData: FormData) {
-    console.log(Object.fromEntries(formData));
+    // Convert FormData to a plain object
+    const data = Object.fromEntries(formData.entries());
+    console.log(data); // Log the data to the console
+
+    // Here you can add your logic to handle the data, e.g., saving it to a database
+    // Ensure to handle any errors accordingly
   }
+
   return (
     <div className="flex h-screen justify-center items-center">
       <form
         action={async (formData) => {
-          "use server";
-          const data = Object.fromEntries(formData.entries());
-          console.log(data);
+          "use server"; // Indicates this function is server-side
+          await submitdata(formData); // Call the submitdata function here
         }}
         className="bg-black p-6 rounded-lg shadow-md w-80"
       >

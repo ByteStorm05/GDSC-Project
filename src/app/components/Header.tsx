@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   // State to track if the menu is open
@@ -19,10 +20,12 @@ const Header: React.FC = () => {
     <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
+        <Image
             src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-            className="h-8"
             alt="GenAi Logo"
+            width={32} // Specify the width
+            height={32} // Specify the height
+            className="h-8"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap">GDSC Project</span>
         </a>
